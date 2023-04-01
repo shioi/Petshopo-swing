@@ -17,36 +17,21 @@ public class RegistrationForm extends JFrame implements ActionListener{
 	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	       setSize(500,500);
 	       setLayout(new GridBagLayout());
-	       GridBagConstraints gbc = new GridBagConstraints();  
-	       
-	       gbc.gridx = 0;
-	       gbc.gridy = 0;
-	       gbc.fill = GridBagConstraints.HORIZONTAL;
-	       add(new JLabel("Registration"),gbc);
-	       username = this.makeFields("Username", gbc,1);
-	       email = this.makeFields("Email", gbc,2);
-	       gbc.gridx = 0;
-	       gbc.gridy = 3;
-	       add(new JLabel("Password"),gbc);
-	       gbc.gridx = 1;
-	       gbc.gridy = 3;
+	       add(new JLabel("Registration"));
+	       username = this.makeFields("Username");
+	       email = this.makeFields("Email");
+	       add(new JLabel("Password"));
 	       pass = new JPasswordField(30);
-	       add(pass,gbc);
-	       gbc.gridheight = 0;
-	       gbc.gridy=4;
+	       add(pass);
 	       JButton register = new JButton("REGISTER");
 	       register.addActionListener(this);
-	       add(register,gbc);
+	       add(register);
 	       setVisible(true);
 	    }
-	JTextField makeFields(String name, GridBagConstraints gbc,int y) {
-		   gbc.gridx = 0;
-	       gbc.gridy = y;
-	       add(new JLabel(name),gbc);
-	       gbc.gridx = 1;
-	       gbc.gridy = y;
+	JTextField makeFields(String name) {
+	       add(new JLabel(name));
 	       JTextField field = new JTextField(30);
-	       add(field,gbc);
+	       add(field);
 	       return field;
 
 	}

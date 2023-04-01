@@ -20,7 +20,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
@@ -36,11 +35,16 @@ public class MainPage extends JFrame{
 
 		this.currentuser = username;
 		Font ft = new Font("Serif",Font.PLAIN,26);
-	    setLayout(new BorderLayout(5,5));
+	    getContentPane().setLayout(new BorderLayout(5,5));
 		JPanel head = new JPanel();
+	    head.setLayout(null);
 	    JLabel petshop = new JLabel("PET SHOP");
+	    petshop.setBounds(419, 31, 125, 36);
 	    petshop.setFont(ft);
 		head.add(petshop);
+		JButton cart = new JButton("Cart");
+		cart.setBounds(924, 16, 64, 25);
+		head.add(cart);
 		head.setPreferredSize(new Dimension(350, 100));
 		head.setBackground(Color.blue);
 
@@ -54,8 +58,8 @@ public class MainPage extends JFrame{
 		tabbedPane.add("Pet Accessories",scrolledpanel2);
 			
 	    //adding to the current frame
-	    this.add(head,BorderLayout.NORTH);
-	    this.add(tabbedPane);
+	    getContentPane().add(head,BorderLayout.NORTH);
+	    getContentPane().add(tabbedPane);
 		setSize(1000,800);
 		setVisible(true);
 	}

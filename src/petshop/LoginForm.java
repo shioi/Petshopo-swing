@@ -10,53 +10,66 @@ import javax.swing.*;
 public class LoginForm extends JFrame implements ActionListener{
 	JTextField username;	
 	JPasswordField password;
+	private JTable table;
 	
 	LoginForm(){
 		super();
 		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 setSize(500,500);
-	     setLayout(new BorderLayout());
+		 setSize(1000,500);
+	     getContentPane().setLayout(new BorderLayout());
 	     
 	       Font ft = new Font("Serif",Font.PLAIN,26);
-	       JLabel loginLabel = new JLabel("LOGIN");
-	       loginLabel.setFont(ft);
-	       add(loginLabel, BorderLayout.NORTH);
 	       
 	       //main inputs fields
 	       JPanel loginFields = new JPanel();
-	       loginFields.setLayout(new GridBagLayout());
-	       GridBagConstraints gbc = new GridBagConstraints();  
-	       gbc.gridx=0;
-	       gbc.gridy = 0;
-	       loginFields.add(new JLabel("Username"),gbc);
-	       gbc.gridx=1;
+	       loginFields.setLayout(null);
+	       JLabel label = new JLabel("Username");
+	       label.setFont(new Font("Dialog", Font.BOLD, 20));
+	       label.setBounds(63, 114, 115, 46);
+	       loginFields.add(label);
 	       username = new JTextField(30);
-	       loginFields.add(username, gbc);
-	       gbc.gridx=0;
-	       gbc.gridy = 1;
-	       loginFields.add(new JLabel("Password"),gbc);
-	       gbc.gridx=1;
+	       username.setBounds(217, 125, 226, 36);
+	       loginFields.add(username);
+	       JLabel label_1 = new JLabel("Password");
+	       label_1.setFont(new Font("Dialog", Font.BOLD, 20));
+	       label_1.setBounds(62, 222, 116, 24);
+	       loginFields.add(label_1);
 	       password = new JPasswordField(30);
-	       loginFields.add(password,gbc);
-	       add(loginFields,BorderLayout.CENTER);
-	       
-	       JPanel buttons = new JPanel();
+	       password.setBounds(217, 219, 226, 36);
+	       loginFields.add(password);
+	       getContentPane().add(loginFields,BorderLayout.CENTER);
+	       JLabel loginLabel = new JLabel("LOGIN");
+	       loginLabel.setBounds(181, 12, 158, 46);
+	       loginFields.add(loginLabel);
+	       loginLabel.setFont(ft);
 	       
 	       //login button
 	       JButton login= new JButton("Login");
-	       login.addActionListener(this);
-	       buttons.add(login);
+	       login.setBounds(132, 319, 73, 25);
+	       loginFields.add(login);
 	       
 	       //registration button
 	       JButton register = new JButton("New user? sign up");
+	       register.setBounds(254, 319, 164, 25);
+	       loginFields.add(register);
+	       
+	       table = new JTable();
+	       table.setBounds(706, 232, 226, -156);
+	       loginFields.add(table);
+	       
+	       JLabel lblNewLabel = new JLabel("New label");
+	       lblNewLabel.setBounds(145, 324, 6, 93);
+	       loginFields.add(lblNewLabel);
 	       register.addActionListener(new ActionListener() {
 	    	   public void actionPerformed(ActionEvent e) {
 	    		   setVisible(false);
 	    		   new RegistrationForm();
 	    	   }
 	       });
-	       buttons.add(register);
-	       add(buttons,BorderLayout.SOUTH);
+	       login.addActionListener(this);
+	       
+	       JPanel buttons = new JPanel();
+	       getContentPane().add(buttons,BorderLayout.SOUTH);
 	       setVisible(true);
 	}
 
@@ -81,6 +94,4 @@ public class LoginForm extends JFrame implements ActionListener{
 		}
 	
 	}
-	
-	
 }

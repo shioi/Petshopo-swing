@@ -19,7 +19,6 @@ import javax.swing.*;
 
 public class AdminPage extends JFrame implements ActionListener{
 	JTextField name, type,total,price;
-	 JComboBox<String> cb;
 	JLabel filelabel;
 	String fileurl;
 	AdminPage(){
@@ -27,14 +26,14 @@ public class AdminPage extends JFrame implements ActionListener{
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	       setSize(600,700);
 		Font ft = new Font("Serif",Font.PLAIN,26);
-	    setLayout(new BorderLayout(80,80));
+	    getContentPane().setLayout(new BorderLayout(80,80));
 		JPanel head = new JPanel();
 	    JLabel petshop= new JLabel("UPLOAD ITEMS");
 	    petshop.setFont(ft);
 	    head.add(petshop);
-	    add(head,BorderLayout.NORTH);
+	    getContentPane().add(head,BorderLayout.NORTH);
 	    JPanel fields = makeFields();
-	    add(fields);
+	    getContentPane().add(fields);
 	    
 	    //fields
 	    setVisible(true);
@@ -50,18 +49,29 @@ public class AdminPage extends JFrame implements ActionListener{
 		nm.add(name);
 		
 		JPanel types = new JPanel();
-		types.add(new JLabel("Types"));
+		types.setLayout(null);
+		JLabel label = new JLabel("Types");
+		label.setBounds(96, 10, 42, 15);
+		types.add(label);
 	    String[] choices = { "Pet Food", "Pet Accessories"};
-	    cb = new JComboBox<String>(choices);
-	    types.add(cb);
 	    
-	    types.add(new JLabel("Quantity"));
+	    JComboBox comboBox = new JComboBox(choices);
+	    comboBox.setBounds(156, 5, 53, 21);
+	    types.add(comboBox);
+	    
+	    JLabel label_1 = new JLabel("Quantity");
+	    label_1.setBounds(227, 9, 61, 15);
+	    types.add(label_1);
 	    total = new JTextField(5);
+	    total.setBounds(293, 7, 59, 19);
 	    types.add(total);
 	    
 		JPanel pri= new JPanel();
-	    types.add(new JLabel("Price"));
+	    JLabel label_2 = new JLabel("Price");
+	    label_2.setBounds(357, 9, 35, 15);
+	    types.add(label_2);
 	    price= new JTextField(5);
+	    price.setBounds(397, 7, 59, 19);
 	    types.add(price);
 	    
 	    //Image picker button
@@ -76,7 +86,7 @@ public class AdminPage extends JFrame implements ActionListener{
 		submit.addActionListener(new ActionListener() {
 	    	   public void actionPerformed(ActionEvent e) {
 	    		   String nm = name.getText();
-	    		   String ty =cb.getSelectedItem().toString(); 
+	    		   String ty =comboBox.getSelectedItem().toString(); 
 	    		   int tot = Integer.parseInt(total.getText());
 	    		   int prc = Integer.parseInt(price.getText());
 					File source = new File(filelabel.getText());
