@@ -35,6 +35,13 @@ public class Product {
 		this.url = url;
 	}
 	
+	Product(int id, String name, int total, int price){
+		this.id = id;
+		this.name = name;
+		this.total = total;
+		this.price = price;
+	}
+	
 	String getName() {
 		return this.name;
 	}

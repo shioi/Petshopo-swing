@@ -24,15 +24,15 @@ public class LoginForm extends JFrame implements ActionListener{
 	       JPanel loginFields = new JPanel();
 	       loginFields.setLayout(null);
 	       JLabel label = new JLabel("Username");
-	       label.setFont(new Font("Dialog", Font.BOLD, 20));
 	       label.setBounds(63, 114, 115, 46);
+	       label.setFont(new Font("Dialog", Font.BOLD, 20));
 	       loginFields.add(label);
 	       username = new JTextField(30);
 	       username.setBounds(217, 125, 226, 36);
 	       loginFields.add(username);
 	       JLabel label_1 = new JLabel("Password");
-	       label_1.setFont(new Font("Dialog", Font.BOLD, 20));
 	       label_1.setBounds(62, 222, 116, 24);
+	       label_1.setFont(new Font("Dialog", Font.BOLD, 20));
 	       loginFields.add(label_1);
 	       password = new JPasswordField(30);
 	       password.setBounds(217, 219, 226, 36);
@@ -60,6 +60,11 @@ public class LoginForm extends JFrame implements ActionListener{
 	       JLabel lblNewLabel = new JLabel("New label");
 	       lblNewLabel.setBounds(145, 324, 6, 93);
 	       loginFields.add(lblNewLabel);
+	       
+	       JLabel lblNewLabel_1 = new JLabel("");
+	       lblNewLabel_1.setIcon(new ImageIcon(LoginForm.class.getResource("/Images/catchain.jpg")));
+	       lblNewLabel_1.setBounds(535, 12, 453, 407);
+	       loginFields.add(lblNewLabel_1);
 	       register.addActionListener(new ActionListener() {
 	    	   public void actionPerformed(ActionEvent e) {
 	    		   setVisible(false);

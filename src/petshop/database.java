@@ -137,6 +137,60 @@ public class database {
         }
 		
 	}
+	
+	ArrayList<Product> getCartProducts(String username) {
+		Connection connection = null;
+		ArrayList<Product> prod = new ArrayList<>(); 
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/swing",
+                "root", "Password@123");
+            
+            Statement statement;
+            statement = connection.createStatement();
+            ResultSet resultSet;
+            String str = String.format("select products.productid, name, price, cart.quantity from products inner join cart on products.productid=cart.prodid where cart.username = '%s'",username);
+            resultSet = statement.executeQuery(str);
+            //product object
+            while(resultSet.next()) {
+            	int id = resultSet.getInt("productid");
+            	String name = resultSet.getString("name");
+            	int price = resultSet.getInt("price");
+            	int total = resultSet.getInt("quantity");
+            	prod.add(new Product(id,name,total,price));
+            }
+		} 
+		catch (Exception exception) {
+			System.err.println(exception.getMessage());
+		}
+
+	return prod;	
+		
+	}
+	Boolean deleteProdFromCart(String username, int id) {
+		Connection connection = null;
+		try {
+            // below two lines are used for connectivity.
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/swing",
+                "root", "Password@123");
+ 
+            Statement statement;
+            statement = connection.createStatement();
+            String str = String.format("delete from cart where username='%s' and prodid=%d",username,id);
+            System.out.println(str);
+            statement.executeUpdate(str);
+            statement.close();
+            connection.close();
+            return true;
+        }
+        catch (Exception exception) {
+            System.out.println(exception);
+            return false;
+        }
+	}
 
 	}
 	

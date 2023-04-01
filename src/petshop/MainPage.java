@@ -44,7 +44,16 @@ public class MainPage extends JFrame{
 		head.add(petshop);
 		JButton cart = new JButton("Cart");
 		cart.setBounds(924, 16, 64, 25);
+			cart.addActionListener(new ActionListener() {
+	    	   public void actionPerformed(ActionEvent e) {
+	    		  // System.out.println("items added");
+	    		   setVisible(false);
+	    		   new cart(currentuser);
+
+	    	   }
+	       });
 		head.add(cart);
+		
 		head.setPreferredSize(new Dimension(350, 100));
 		head.setBackground(Color.blue);
 

@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.Color;
 
 
 public class AdminPage extends JFrame implements ActionListener{
@@ -23,6 +24,8 @@ public class AdminPage extends JFrame implements ActionListener{
 	String fileurl;
 	AdminPage(){
 		super();
+		getContentPane().setBackground(new Color(145, 65, 172));
+		setBackground(new Color(222, 221, 218));
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	       setSize(600,700);
 		Font ft = new Font("Serif",Font.PLAIN,26);
@@ -44,45 +47,65 @@ public class AdminPage extends JFrame implements ActionListener{
 		fields.setLayout(new BoxLayout(fields,BoxLayout.Y_AXIS));
 
 		JPanel nm = new JPanel();
-		nm.add(new JLabel("Product Name"));
+		nm.setLayout(null);
+		JLabel label_3 = new JLabel("Product Name");
+		label_3.setFont(new Font("Dialog", Font.BOLD, 17));
+		label_3.setBounds(29, 12, 162, 50);
+		nm.add(label_3);
 		name = new JTextField(40);
+		name.setBounds(144, 72, 444, 50);
 		nm.add(name);
 		
 		JPanel types = new JPanel();
 		types.setLayout(null);
 		JLabel label = new JLabel("Types");
-		label.setBounds(96, 10, 42, 15);
+		label.setFont(new Font("Dialog", Font.BOLD, 14));
+		label.setBounds(36, 74, 78, 29);
 		types.add(label);
 	    String[] choices = { "Pet Food", "Pet Accessories"};
 	    
 	    JComboBox comboBox = new JComboBox(choices);
-	    comboBox.setBounds(156, 5, 53, 21);
+	    comboBox.setBounds(122, 72, 140, 32);
 	    types.add(comboBox);
 	    
 	    JLabel label_1 = new JLabel("Quantity");
-	    label_1.setBounds(227, 9, 61, 15);
+	    label_1.setFont(new Font("Dialog", Font.BOLD, 15));
+	    label_1.setBounds(291, 75, 83, 28);
 	    types.add(label_1);
 	    total = new JTextField(5);
-	    total.setBounds(293, 7, 59, 19);
+	    total.setBounds(439, 74, 59, 19);
 	    types.add(total);
 	    
 		JPanel pri= new JPanel();
 	    JLabel label_2 = new JLabel("Price");
-	    label_2.setBounds(357, 9, 35, 15);
+	    label_2.setFont(new Font("Dialog", Font.BOLD, 15));
+	    label_2.setBounds(291, 132, 68, 17);
 	    types.add(label_2);
 	    price= new JTextField(5);
-	    price.setBounds(397, 7, 59, 19);
+	    price.setBounds(439, 131, 59, 19);
 	    types.add(price);
 	    
 	    //Image picker button
 	    JButton imagePicker = new JButton("Choose Image");
+	    imagePicker.setBounds(69, 17, 134, 36);
 	    imagePicker.addActionListener(this);
+	    pri.setLayout(null);
 	    pri.add(imagePicker);
 		filelabel = new JLabel();	
+		filelabel.setBounds(369, 17, 0, 0);
 		pri.add(filelabel);
+
+		
+		
+		fields.add(nm);
+		fields.add(types);
+		fields.add(pri);
 		
 		//submit button
 		JButton submit = new JButton("Submit");
+		submit.setBackground(new Color(181, 131, 90));
+		submit.setBounds(241, 129, 115, 36);
+		pri.add(submit);
 		submit.addActionListener(new ActionListener() {
 	    	   public void actionPerformed(ActionEvent e) {
 	    		   String nm = name.getText();
@@ -107,13 +130,6 @@ public class AdminPage extends JFrame implements ActionListener{
 	    			   JOptionPane.showMessageDialog(fields, "Error", "Cannot upload", JOptionPane.ERROR_MESSAGE);
 	    		   }
 	       });
-
-		
-		
-		fields.add(nm);
-		fields.add(types);
-		fields.add(pri);
-		fields.add(submit);
 		return fields;
 		
 			
