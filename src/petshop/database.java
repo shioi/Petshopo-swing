@@ -180,7 +180,6 @@ public class database {
             Statement statement;
             statement = connection.createStatement();
             String str = String.format("delete from cart where username='%s' and prodid=%d",username,id);
-            System.out.println(str);
             statement.executeUpdate(str);
             statement.close();
             connection.close();
@@ -191,6 +190,42 @@ public class database {
             return false;
         }
 	}
+	
+	 Boolean buyItems(String username) {
+		 Connection connection = null;
+		try {
+            // below two lines are used for connectivity.
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/swing",
+                "root", "Password@123");
+ 
+            
+            
+			Statement statement;
+            statement = connection.createStatement();
+            ResultSet resultSet;
+            String str = String.format("select prodid from cart where username = '%s'",username);
+            resultSet = statement.executeQuery(str);
+            //product object
+            while(resultSet.next()) {
+            	Statement stat = connection.createStatement();
+            	int id = resultSet.getInt("prodid");
+                String str2 = String.format("UPDATE products SET total = total - (select sum(quantity) from cart where username = '%s' and prodid = %d) where productid=%d",username,id,id);
+				stat.executeUpdate(str2);
+				stat.close();
+            }
+            String str3 = String.format("DELETE FROM cart WHERE username = '%s'",username);
+            statement.executeUpdate(str3);
+            statement.close();
+            connection.close();
+            return true;
+        }
+        catch (Exception exception) {
+            System.out.println(exception);
+            return false;
+        }
+	 }
 
 	}
 	

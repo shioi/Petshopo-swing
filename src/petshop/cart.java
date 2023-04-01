@@ -49,11 +49,12 @@ public class cart extends JFrame {
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton btnBuy = new JButton("Buy");
+		JButton btnBuy = new JButton("Proceed to Buy");
 		btnBuy.setBounds(542, 483, 117, 25);
 		btnBuy.addActionListener(new ActionListener() {
 	    	   public void actionPerformed(ActionEvent e) {
-	    		   //delete from database and update product
+	    		   setVisible(false);
+	    		   new AddForm(username);
 	    	   }
 	       });
 
