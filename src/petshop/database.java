@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 
 public class database {
+	//change password here
+	String pass = "Password@123";
 	Boolean registration(String username, String email,  char [] password) {
 		Connection connection = null;
 		try {
@@ -11,7 +13,7 @@ public class database {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
  
             Statement statement;
             statement = connection.createStatement();
@@ -34,7 +36,7 @@ public class database {
 			Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
             
             Statement statement;
             statement = connection.createStatement();
@@ -62,7 +64,7 @@ public class database {
 			Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
             
             Statement statement;
             statement = connection.createStatement();
@@ -96,7 +98,7 @@ public class database {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
  
             Statement statement;
             statement = connection.createStatement();
@@ -120,7 +122,7 @@ public class database {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
  
             Statement statement;
             statement = connection.createStatement();
@@ -145,7 +147,7 @@ public class database {
 			Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
             
             Statement statement;
             statement = connection.createStatement();
@@ -175,7 +177,7 @@ public class database {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
  
             Statement statement;
             statement = connection.createStatement();
@@ -198,7 +200,7 @@ public class database {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/swing",
-                "root", "Password@123");
+                "root", pass);
  
             
             

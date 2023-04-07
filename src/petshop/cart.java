@@ -23,6 +23,7 @@ import javax.swing.border.LineBorder;
 public class cart extends JFrame {
 	final String username;
 	int total = 0;
+	Boolean isEmpty=false;
 	cart(String username){
 		super();
 		this.username = username;
@@ -53,8 +54,12 @@ public class cart extends JFrame {
 		btnBuy.setBounds(542, 483, 117, 25);
 		btnBuy.addActionListener(new ActionListener() {
 	    	   public void actionPerformed(ActionEvent e) {
+	    		   if(isEmpty) {
+						JOptionPane.showInternalMessageDialog(new JPanel(),"Cart Empty!!!", "Error",JOptionPane.ERROR_MESSAGE);
+	    		   } else {
 	    		   setVisible(false);
 	    		   new AddForm(username);
+	    		   }
 	    	   }
 	       });
 
@@ -94,6 +99,9 @@ public class cart extends JFrame {
 		database dbms = new database();
 		ArrayList<Product> prods = new ArrayList<>();
 		prods = dbms.getCartProducts(username);
+		if(prods.size() == 0) {
+			isEmpty=true;
+		}
 		
 		for(Product prod: prods) {
 			JPanel panel_4 = new JPanel();
