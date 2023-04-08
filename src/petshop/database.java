@@ -6,6 +6,11 @@ import java.util.ArrayList;
 public class database {
 	//change password here
 	String pass = "Password@123";
+public static String getOperatingSystem() {
+	    String os = System.getProperty("os.name");
+	    return os;
+	}
+	
 	Boolean registration(String username, String email,  char [] password) {
 		Connection connection = null;
 		try {
@@ -79,6 +84,11 @@ public class database {
             	int price = resultSet.getInt("price");
             	int total = resultSet.getInt("total");
             	String url = resultSet.getString("url");
+            	if(getOperatingSystem().equals("Linux")) {
+            		url = "/home/isyum/eclipse-workspace/petshop/src/Images/"+url;
+            	} else {
+					url = "C:\\Users\\NIDHI\\eclipse-workspace\\petshop\\src\\Images\\"+url;
+            	}
             	prod.add(new Product(id,name,type,total,price,url));
 
             }

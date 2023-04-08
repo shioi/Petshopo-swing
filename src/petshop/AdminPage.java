@@ -45,6 +45,7 @@ public class AdminPage extends JFrame implements ActionListener{
 	}
 	
 	JPanel makeFields() {
+		String os = getOperatingSystem();
 		JPanel fields = new JPanel();
 		fields.setBounds(0, 124, 1113, 537);
 		fields.setLayout(new BoxLayout(fields,BoxLayout.Y_AXIS));
@@ -102,9 +103,18 @@ public class AdminPage extends JFrame implements ActionListener{
 	    		   int tot = Integer.parseInt(total.getText());
 	    		   int prc = Integer.parseInt(price.getText());
 					File source = new File(filelabel.getText());
-					int ind = filelabel.getText().lastIndexOf("\\");
-					String filename = filelabel.getText().substring(ind+1); 
-					 File dest =new File(System.getProperty("user.dir")+"\\src\\Images\\" + filename);
+					int ind;
+					File dest;
+					String filename;
+					if(os.equals("Linux")) {
+						ind = filelabel.getText().lastIndexOf("/");
+						filename = filelabel.getText().substring(ind+1); 
+						dest =new File(System.getProperty("user.dir")+"/src/Images/" + filename);
+					} else {
+						ind = filelabel.getText().lastIndexOf("\\");
+						filename = filelabel.getText().substring(ind+1); 
+						 dest =new File(System.getProperty("user.dir")+"\\src\\Images\\" + filename);
+					}
 					try {
 						copyFile(source,dest);
 					} catch (Exception exe) {
@@ -163,5 +173,10 @@ public class AdminPage extends JFrame implements ActionListener{
 	    }
 		
 	}
+public static String getOperatingSystem() {
+	    String os = System.getProperty("os.name");
+	    return os;
+	}
+	
 }
 
